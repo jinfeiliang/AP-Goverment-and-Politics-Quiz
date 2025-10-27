@@ -142,3 +142,19 @@ function restartQuiz(resetFilters = true) {
 
 populateFilters();
 loadQuestion();
+
+function endTestEarly() {
+  if (userAnswers.length === 0) {
+    alert("You haven't answered any questions yet!");
+    return;
+  }
+
+  quizContainer.innerHTML = "";
+  nextBtn.classList.add("hidden");
+  resultDiv.classList.remove("hidden");
+
+  const answeredCount = userAnswers.length;
+  const percentage = ((score / answeredCount) * 100).toFixed(1);
+
+  scoreDisplay.textContent = `${score}/${answeredCount} (${percentage}%)`;
+}
